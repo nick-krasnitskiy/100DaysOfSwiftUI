@@ -48,3 +48,7 @@ print("5 x 5 is \(5 * 5)")
 
 var city = "Cardiff"
 var messageTwo = "Welcome to \(city)"
+
+let temperatureInCelsius = 30.0
+let temperatureInFahrenheit = temperatureInCelsius * 9 / 5 + 32
+print("Celsius: \(temperatureInCelsius) °C, Fahrenheit: \(temperatureInFahrenheit) °F")
