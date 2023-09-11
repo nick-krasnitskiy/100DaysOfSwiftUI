@@ -20,3 +20,8 @@ print(playerName)
 let managerName = "Michael Scott"
 let dogBreed = "Samoed"
 let meaningOfLife = "How many roads must a man walk down?"
+
+var favoriteShow = "Orange is the New Black"
+favoriteShow = "The Good Place"
+favoriteShow = "Doctor Who"
+
