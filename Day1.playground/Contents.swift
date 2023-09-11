@@ -51,3 +51,30 @@ The best laid schemes
 O’ mice and men
 Gang aft agley
 """
+
+let score = 10
+let reallyBig = 100___000___000
+
+let lowScore = score - 2
+let higherScore = score + 10
+let doubleScore = score * 2
+let squaredScore = score * score
+let halfScore = score / 2
+print(score)
+
+var counter = 10
+counter = counter + 5
+
+counter += 5
+print(counter)
+counter *= 2
+print(counter)
+counter -= 10
+print(counter)
+counter /= 2
+print(counter)
+
+let number = 120
+print(number.isMultiple(of: 3))
+print(120.isMultiple(of: 3))
+
