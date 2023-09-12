@@ -113,4 +113,27 @@ people2.insert("Tom Cruise")
 people2.insert("Nicolas Cage")
 people2.insert("Samuel L Jackson")
 
+var selected = "Monday"
+selected = "Tuesday"
+selected = "January"
+selected = "Friday "
 
+enum WeekDay {
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+}
+
+var day = WeekDay.monday
+day = WeekDay.thursday
+day = WeekDay.friday
+
+enum WeekDay2 {
+    case monday, tuesday, wednesday, thursday, friday
+}
+
+var day2 = WeekDay2.monday
+day2 = .thursday
+day2 = .friday
