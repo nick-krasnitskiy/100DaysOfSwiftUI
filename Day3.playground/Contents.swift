@@ -57,3 +57,4 @@ print(cities.sorted())
 let presidents = ["Bush", "Obama", "Trump", "Biden"]
 let reverdedPresidents = presidents.reversed()
 print(reverdedPresidents)
+print(Array(reverdedPresidents))
