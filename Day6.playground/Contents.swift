@@ -53,3 +53,27 @@ print(namesTwo[1...3])
 print(namesTwo[1..<3])
 print(namesTwo[1...])
 
+var countdown = 10
+
+while countdown > 0 {
+    print("\(countdown)...")
+    countdown -= 1
+}
+
+print("Blast off")
+
+let id = Int.random(in: 1...1000)
+let amount = Double.random(in: 0...1)
+
+// Create an integer to store our roll
+var roll = 0
+
+// Carry on looping until we reach 20
+while roll != 20 {
+    // Roll a new dice and print what it was
+    roll = Int.random(in: 1...20)
+    print("I rolled a \(roll)")
+}
+
+// If we're here it mean the loop ended - we got a 20!
+print("Crirical hit!")
