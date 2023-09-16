@@ -1,4 +1,5 @@
 import Cocoa
+import Darwin
 
 var greeting = "Hello, playground"
 
@@ -36,3 +37,42 @@ func printTimesTableTwo(number: Int, end: Int) {
 }
 
 printTimesTableTwo(number: 5, end: 20)
+
+let root = sqrt(169)
+print(root)
+
+func rollDice() -> Int {
+    Int.random(in: 1...6)
+}
+
+let result = rollDice()
+print(result)
+
+func areLettersIdentical(string1: String, string2: String) -> Bool {
+    string1.sorted() == string2.sorted()
+}
+
+func pythagoras(a: Double, b: Double) -> Double {
+    sqrt(a * a + b * b)
+}
+
+print(pythagoras(a: 3, b: 4))
+
+func doMath() -> Int {
+    return 5 + 5
+}
+
+func doMoreMath() -> Int {
+    5 + 5
+}
+
+func greet(name: String) -> String {
+    if name == "Taylor Swift" {
+        return "Oh wow!"
+    } else {
+        return "Hello, \(name)"
+    }
+}
+func greetTwo(name: String) -> String {
+    name == "Taylor Swift" ? "Oh wow" : "Hello, \(name)"
+}
