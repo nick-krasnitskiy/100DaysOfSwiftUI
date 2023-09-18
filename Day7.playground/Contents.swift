@@ -76,3 +76,32 @@ func greet(name: String) -> String {
 func greetTwo(name: String) -> String {
     name == "Taylor Swift" ? "Oh wow" : "Hello, \(name)"
 }
+
+func inUppercase(string: String) -> Bool {
+    string == string.uppercased()
+}
+
+func getUser() -> (firstName: String, lastName: String) {
+    ("Taylor", "Swift")
+}
+
+let user = getUser()
+print("Name: \(user.firstName) \(user.lastName)")
+
+func getUserTwo() -> (String, String) {
+    ("Taylor", "Swift")
+}
+
+let userTwo = getUserTwo()
+print("Name: \(userTwo.0) \(userTwo.1)")
+
+let firstName = user.firstName
+let lastName = user.lastName
+
+print("Name: \(firstName) \(lastName)")
+
+let (firstName2, lastName2) = getUser()
+print("Name: \(firstName2) \(lastName2)")
+
+let (firstName3, _) = getUser()
+print("Name: \(firstName3)")
