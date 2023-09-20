@@ -58,3 +58,37 @@ do {
 } catch {
     print("There was an error!")
 }
+
+
+enum RootError: Error {
+    case outOfBounds, noRoot
+}
+
+func squareRootInteger(_ number: Int) throws -> Int {
+    
+    guard number > 1 && number < 10000 else { throw RootError.outOfBounds }
+    
+    var result = 0
+    
+    for root in 1...100 {
+        if number == root * root {
+            result = root
+        } else {
+            continue
+        }
+    }
+    
+    guard result != 0 else { throw RootError.noRoot }
+    
+    return result
+   
+}
+
+do {
+    let result = try squareRootInteger(49)
+    print(result)
+} catch RootError.outOfBounds {
+    print("Your number is out of bounds!")
+} catch RootError.noRoot {
+    print("I can't fing the integer root of your number!")
+}
