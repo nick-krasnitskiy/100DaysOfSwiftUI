@@ -79,3 +79,33 @@ let payment3 = { () -> Bool in
 }
 
 payment3()
+
+let team2 = ["Gloria", "Suzanne", "Piper", "Tiffany", "Tasha"]
+
+let capitanFirstTeam2 = team2.sorted {
+    if $0 == "Suzanne" {
+        return true
+    } else if $1 == "Suzanne" {
+        return false
+    }
+    
+    return $0 < $1
+}
+
+print(captainFirstTeam2)
+
+let reverseTeam = team2.sorted { $0 > $1 }
+
+let tOnly = team2.filter { $0.hasPrefix("T") }
+print(tOnly)
+
+let uppercaseTeam = team2.map { $0.uppercased() }
+print(uppercaseTeam)
+
+func animate(duration: Double, animations: () -> Void) {
+    print("Starting a \(duration) second animation...")
+    animations()
+}
+
+animate(duration: 3) { print("Fade out of the image") }
+
