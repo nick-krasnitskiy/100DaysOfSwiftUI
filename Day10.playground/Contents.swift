@@ -22,7 +22,7 @@ red.printSummary()
 wings.printSummary()
 
 struct Employee {
-    let name: String 
+    let name: String
     var vacationRemaning: Int = 14
     
     mutating func takeVacation(days: Int) {
@@ -45,3 +45,31 @@ var archer2 = Employee.init(name: "Sterling Archer", vacationRemaning: 14)
 
 var archer3 = Employee(name: "Sterling Archer")
 print(archer3.vacationRemaning)
+
+struct Employee2 {
+    let name: String
+    var vacationAllocated = 14
+    var vacationTaken = 0
+    
+    var vacatopnRemaining: Int {
+        get {
+            vacationAllocated - vacationTaken
+        }
+        
+        set {
+            vacationAllocated  = vacationTaken + newValue
+        }
+    }
+}
+
+var archer4 = Employee2(name: "Sterling Archer", vacationAllocated: 14)
+archer4.vacationTaken += 4
+print(archer4.vacatopnRemaining)
+archer4.vacationTaken += 4
+print(archer4.vacatopnRemaining)
+
+var archer5 = Employee2(name: "Sterling Archer", vacationAllocated: 14)
+archer5.vacationTaken += 4
+print(archer5.vacatopnRemaining)
+archer5.vacatopnRemaining = 5
+print(archer5.vacationAllocated)
