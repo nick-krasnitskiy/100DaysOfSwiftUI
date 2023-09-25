@@ -191,4 +191,24 @@ let roslin5 = User3(name: "Megan R", yearsActive: 45)
 print(roslin5.name)
 print(roslin5.yearsActive)
 
+struct Student {
+    var name: String
+    var bestFriend: String
+    
+    init(name: String, bestFriend: String) {
+        print("Enrolling \(name) in class…")
+        self.name = name
+        self.bestFriend = bestFriend
+    }
+}
 
+struct Student2 {
+    var name: String
+    var bestFriend: String
+    
+    init(name studentName: String, bestfriend studentBestFriend: String) {
+        print("Enrolling \(studentName) in class...")
+        name = studentName
+        bestFriend = studentBestFriend
+    }
+}
