@@ -67,3 +67,25 @@ struct Unwrap {
     }
 }
 
+struct Car {
+    let model: String
+    let numberOdSeats: Int
+    private(set) var currentGear: Int
+
+    
+    init(model: String, numberOdSeats: Int, currentGear: Int) {
+        self.model = model
+        self.numberOdSeats = numberOdSeats
+        self.currentGear = currentGear
+    }
+    
+    mutating func addGear() {
+        if currentGear > 0 && currentGear <= 10 {
+            currentGear += 1
+        }
+    }
+}
+
+var car = Car(model: "Lada", numberOdSeats: 5, currentGear: 7)
+car.addGear()
+print(car.currentGear)
