@@ -105,3 +105,35 @@ var app = App()
 app.contacts.append("Adrian E")
 app.contacts.append("Allen W")
 app.contacts.append("Ish S")
+
+struct Player {
+    let name: String
+    let number: Int
+}
+
+let player = Player(name: "Megan R", number: 15)
+
+struct Player2 {
+    let name: String
+    let number: Int
+    
+    init(name: String, number: Int) {
+        self.name = name
+        self.number = number
+    }
+}
+
+let player2 = Player2(name: "Megan R", number: 17)
+
+struct Player3 {
+    let name: String
+    let number: Int
+    
+    init(name: String) {
+        self.name = name
+        number = Int.random(in: 1...99)
+    }
+}
+
+let player3 = Player3(name: "Megan R")
+print(player3.number)
