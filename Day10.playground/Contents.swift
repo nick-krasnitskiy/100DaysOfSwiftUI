@@ -137,3 +137,58 @@ struct Player3 {
 
 let player3 = Player3(name: "Megan R")
 print(player3.number)
+
+struct User {
+    var name: String
+    var yearsActive = 0
+}
+
+let roslin = User(name: "Laura Roslin")
+print(roslin.yearsActive)
+
+let adama = User(name: "William Adama", yearsActive: 45)
+print(adama.yearsActive)
+
+struct User2 {
+    var name: String
+    var yearsActive = 0
+    
+    init() {
+        self.name = "Anonymous"
+        print("Creating an anonymous user...")
+    }
+}
+
+let roslin2 = User2()
+print(roslin2.name)
+print(roslin2.yearsActive)
+
+
+struct User3 {
+    var name: String
+    var yearsActive = 0
+}
+
+extension User3 {
+    init() {
+        self.name = "Anonymous"
+        print("Creating an anonymous user...")
+    }
+}
+
+// as does creating an anonymous user
+let roslin3 = User3()
+print(roslin3.name)
+print(roslin3.yearsActive)
+
+// creating a named user now works
+let roslin4 = User3(name: "Megan R")
+print(roslin4.name)
+print(roslin4.yearsActive)
+
+// creating a named user also now works
+let roslin5 = User3(name: "Megan R", yearsActive: 45)
+print(roslin5.name)
+print(roslin5.yearsActive)
+
+
