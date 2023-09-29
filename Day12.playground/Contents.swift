@@ -68,3 +68,24 @@ class Car: Venicle {
 }
 
 let teslaX = Car(isElectric: true, isConvertible: false)
+
+class User {
+    var username = "Anonymous"
+}
+
+var user1 = User()
+var user2 = user1
+user2.username = "Taylor Swift"
+
+print(user1.username)
+print(user2.username)
+
+class User2 {
+    var username = "Anonymous"
+    
+    func copy() -> User2 {
+        let user = User2()
+        user2.username = username
+        return user
+    }
+}
