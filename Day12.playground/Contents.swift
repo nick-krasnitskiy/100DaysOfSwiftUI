@@ -120,4 +120,19 @@ print("Loop is finished!")
 users.removeAll()
 print("Array is clear")
 
+class User4 {
+    var name = "Paul"
+}
 
+let user4 = User4()
+user4.name = "Taylor"
+print(user4.name)
+
+class User5 {
+    var name = "Paul"
+}
+
+var user5 = User5()
+user5.name = "Taylor"
+user5 = User5()
+print(user5.name)
