@@ -136,3 +136,56 @@ var user5 = User5()
 user5.name = "Taylor"
 user5 = User5()
 print(user5.name)
+
+class Animal {
+    let legs: Int
+    
+    init(legs: Int) {
+        self.legs = legs
+    }
+}
+
+class Dog: Animal {
+    func speak() {
+        print("Bark! Bark! Bark!")
+    }
+}
+
+class Cat: Animal {
+    let isTame: Bool
+    
+    init(legs: Int, isTame: Bool) {
+        self.isTame = isTame
+        super.init(legs: legs)
+
+    }
+    
+    func speak() {
+        print("Myao! Myao! Myao!")
+    }
+}
+
+class Corgi: Dog {
+    override func speak() {
+        print("Bark! Bark! Bark! I'm Corgi")
+    }
+}
+
+class Poodle: Dog {
+    override func speak() {
+        print("Bark! Bark! Bark! I'm Poodle")
+    }
+}
+
+class Persian: Cat {
+    override func speak() {
+        print("Myao! Myao! Myao! I'm Persian")
+    }
+}
+
+class Lion: Cat {
+    override func speak() {
+        print("Myao! Myao! Myao! I'm Lion")
+    }
+}
+
