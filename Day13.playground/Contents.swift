@@ -61,3 +61,39 @@ func getTravelEstimates(using vehicles: [Vehicle], distance: Int) {
 }
 
 getTravelEstimates(using: [car, bike], distance: 150)
+
+struct Book {
+    var name: String
+}
+
+func buy(_ book: Book) {
+    print("I'm buying \(book.name)")
+}
+
+protocol Purchaseable {
+    var name: String { get set }
+}
+
+struct Book2: Purchaseable {
+    var name: String
+    var author: String
+}
+
+struct Movie: Purchaseable {
+    var name: String
+    var authors: [String]
+}
+
+struct Car2: Purchaseable {
+    var name: String
+    var manufactor: String
+}
+
+struct Coffee: Purchaseable {
+    var name: String
+    var strenght: Int
+}
+
+func buy2(_ item: Purchaseable) {
+    print("I'm buying \(item.name)")
+}
