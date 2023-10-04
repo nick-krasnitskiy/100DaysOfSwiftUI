@@ -201,3 +201,36 @@ struct Employee: Person {
 
 let taylor = Employee(name: "Taylor Swift!")
 taylor.sayHello()
+
+protocol Building {
+    var rooms: Int { get }
+    var cost: Int { get set }
+    var agentName: String { get set }
+    
+    func getSummary()
+}
+
+struct House: Building {
+    var rooms = 5
+    
+    var cost = 500_000
+    
+    var agentName = "Paul"
+    
+    func getSummary() {
+        print("Summary: \(rooms) rooms, \(cost) $, agent \(agentName)")
+    }
+}
+
+
+struct Office: Building {
+    var rooms = 7
+    
+    var cost = 800_000
+    
+    var agentName = "Nick"
+    
+    func getSummary() {
+        print("Summary: \(rooms) rooms, \(cost) $, agent \(agentName)")
+    }
+}
