@@ -97,3 +97,72 @@ struct Coffee: Purchaseable {
 func buy2(_ item: Purchaseable) {
     print("I'm buying \(item.name)")
 }
+
+func getRandomNumber() -> some Equatable {
+    Int.random(in: 1...6)
+}
+
+func getRandomBool() -> some Equatable {
+    Bool.random()
+}
+
+var quote = "   The truth is rarely pure and never simple   "
+let trimmed = quote.trimmingCharacters(in: .whitespacesAndNewlines)
+print(trimmed)
+
+extension String {
+    func trimmed() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    mutating func trim() {
+        self = self.trimmed()
+    }
+    
+    var lines: [String] {
+        self.components(separatedBy: .newlines)
+    }
+}
+
+let trimmed2 = quote.trimmed()
+print(trimmed2)
+
+func trim(_ string: String) -> String {
+    string.trimmingCharacters(in: .whitespacesAndNewlines)
+}
+
+let trimmed3 = trim(quote)
+print(trimmed3)
+
+quote.trim()
+
+let lyrics = """
+But I keep cruising
+Can't stop, won't stop moving
+It's like I got this music in my mind
+Saying it's gonna be alright
+"""
+
+print(lyrics.lines.count)
+
+struct Book3 {
+    let title: String
+    let pageCount: Int
+    let readingHours: Int
+}
+
+let lotr = Book3(title: "Lord of the Rings", pageCount: 1178, readingHours: 24)
+
+struct Book4 {
+    let title: String
+    let pageCount: Int
+    let readingHours: Int
+}
+
+extension Book4 {
+    init(title: String, pageCount: Int) {
+        self.title = title
+        self.pageCount = pageCount
+        self.readingHours = pageCount / 50
+    }
+}
