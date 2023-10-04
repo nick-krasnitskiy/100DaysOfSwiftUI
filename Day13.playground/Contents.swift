@@ -1,4 +1,5 @@
 import Cocoa
+import Darwin
 
 var greeting = "Hello, playground"
 
@@ -166,3 +167,37 @@ extension Book4 {
         self.readingHours = pageCount / 50
     }
 }
+
+let guests = ["Mario", "Luigi", "Peach"]
+
+if guests.isEmpty == false {
+    print("Guest count: \(guests.count)")
+}
+
+extension Collection {
+    var isNotEmpty: Bool {
+        isEmpty == false
+    }
+}
+
+if guests.isNotEmpty {
+    print("Guest count: \(guests.count)")
+}
+
+protocol Person {
+    var name: String { get }
+    func sayHello()
+}
+
+extension Person {
+    func sayHello() {
+        print("Hi, I'm \(name)")
+    }
+}
+
+struct Employee: Person {
+    var name: String
+}
+
+let taylor = Employee(name: "Taylor Swift!")
+taylor.sayHello()
