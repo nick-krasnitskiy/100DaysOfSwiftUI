@@ -31,3 +31,23 @@ if let unwrappedNumber = number {
     print(square(number: unwrappedNumber))
 }
 
+func getUsername() -> String? {
+    "Taylor"
+}
+
+if let username = getUsername() {
+    print("User name is \(username)")
+} else {
+    print("No username")
+}
+
+func printSquare(of number: Int?) {
+    guard let number = number else {
+        print("Misiing input")
+        return
+    }
+    
+    print("\(number) X \(number) is \(number * number)")
+}
+
+
