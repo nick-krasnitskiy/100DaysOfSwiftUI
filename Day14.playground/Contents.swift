@@ -87,3 +87,7 @@ struct Book2 {
 var book2: Book2? = nil
 let author2 = book2?.author?.first?.uppercased() ?? "А"
 print(author2)
+
+func returnRandomItem(for items: [Int]?) -> Int { return items?.randomElement() ?? Int.random(in: 1...100)}
+
+
