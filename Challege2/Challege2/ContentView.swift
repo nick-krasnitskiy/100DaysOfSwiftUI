@@ -9,54 +9,83 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
             ZStack {
-                Color.mint
+                RadialGradient(stops: [.init(color: Color(#colorLiteral(red: 0, green: 0.009437999482, blue: 0.3450298726, alpha: 1)), location: 0.3), .init(color: Color(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)), location: 0.3)], center: .top, startRadius: 400, endRadius: 410)
                     .ignoresSafeArea()
                 VStack {
-                    Text("Condition to meet")
-                        .font(.title)
-                        .foregroundStyle(.white)
                     Spacer()
-                    Text("Win")
+                    Text("Rock - Sciccors - Paper")
                         .font(.largeTitle.bold())
-                        .fontWeight(.bold)
                         .foregroundStyle(.white)
                     Spacer()
-                    Text("👊")
-                        .font(.system(size: 100))
-                    Spacer()
-                    HStack(spacing: 30) {
-                        Button {
-                            // // logic button 1
-                        } label: {
+                    VStack(alignment: .center) {
+                        Group{
+
+                            Text("Condition to meet")
+                                .font(.title)
+                                .foregroundStyle(.white)
+                            Text("Win")
+                                .font(.largeTitle.bold())
+                                .foregroundStyle(.white)
+                        }
+                        Spacer()
+                        ZStack {
+                            Circle()
                             Text("👊")
-                                .font(.system(size: 65))
+                                .font(.system(size: 100))
                         }
-                        Button {
-                            // logic button 2
-                        } label: {
-                            Text("✌️")
-                                .font(.system(size: 65))
+                        .padding()
+                        
+                        Spacer()
+                        HStack(spacing: 30) {
+                            Button {
+                                // // logic button 1
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .foregroundStyle(Color(#colorLiteral(red: 0.0152423894, green: 0.07408868521, blue: 0.3461441398, alpha: 1)))
+                                    Text("👊")
+                                        .font(.system(size: 65))
+                                }
+                                
+                            }
+                            Button {
+                                // logic button 2
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .foregroundStyle(Color(#colorLiteral(red: 0.0152423894, green: 0.07408868521, blue: 0.3461441398, alpha: 1)))
+                                    Text("✌️")
+                                        .font(.system(size: 65))
+                                }
+                                
+                            }
+                            Button {
+                                // logic button 3
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .foregroundStyle(Color(#colorLiteral(red: 0.0152423894, green: 0.07408868521, blue: 0.3461441398, alpha: 1)))
+                                    Text("🤚")
+                                        .font(.system(size: 65))
+
+                                }
+                                                            }
                         }
-                        Button {
-                            // logic button 3
-                        } label: {
-                            Text("🤚")
-                                .font(.system(size: 65))
-                        }
+                        .padding(30)
+                        Spacer()
                     }
-                    .padding(30)
+                    .frame(maxHeight: 400)
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
                     Spacer()
-                    Text("Score: ???")
+                    Text("Score: 0")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                     Spacer()
                 }
-                .navigationTitle("Rock - Paper - Scissors")
-                
-            }
         }
     }
 }
