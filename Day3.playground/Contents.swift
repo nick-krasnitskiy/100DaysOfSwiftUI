@@ -133,3 +133,13 @@ people2.insert("Denzel Washington")
 people2.insert("Tom Cruise")
 people2.insert("Nicolas Cage")
 people2.insert("Samuel L Jackson")
+
+// How to create and use enums
+
+enum Weekday {
+    case monday, tuesday, wednesday, thursday, friday
+}
+
+var day = Weekday.monday
+day = .tuesday
+day = .friday
