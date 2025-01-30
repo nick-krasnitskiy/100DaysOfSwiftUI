@@ -37,4 +37,9 @@ print(username)
 
 // let score2: Int = "Zero"
 
+// Checkpoint 2
+
+let names = ["Nick", "Steve", "Alex", "Ivan", "Alex"]
+print(names.count)
+print(Set(names).count)
 
