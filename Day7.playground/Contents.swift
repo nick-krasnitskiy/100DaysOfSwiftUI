@@ -133,3 +133,55 @@ print("Name: \(firstname2) \(lastname2)")
 
 let (firstname3, _) = getUser3()
 print("Name: \(firstname3)")
+
+// How to customize parameter labels
+
+func rollDice3(sides: Int, count: Int) -> [Int] {
+    // Start with an empty array
+    var rolls = [Int]()
+    
+    // Roll as many dice as needed
+    for _ in 1...count {
+        // Add each result to our array
+        let roll = Int.random(in: 1...sides)
+        rolls.append(roll)
+    }
+    
+    // Send back all the rolls
+    return rolls
+}
+
+let rolls = rollDice3(sides: 6, count: 4)
+
+let lyric = "I see a red door and I want it painted black"
+print(lyric.hasPrefix("I see"))
+
+func isUppercase2(string: String) -> Bool {
+    string == string.uppercased()
+}
+
+let string = "HELLO WORLD"
+let result2 = isUppercase2(string: string)
+
+func isUppercase3(_ string: String) -> Bool {
+    string == string.uppercased()
+}
+
+let result3 = isUppercase3(string)
+
+func printTimesTables2(number: Int) {
+    for i in 1...12 {
+        print("\(i) X \(number) is \(i * number)")
+    }
+}
+
+printTimesTables2(number: 5)
+
+func printTimesTable3(for number: Int) {
+    for i in 1...12 {
+        print("\(i) X \(number) is \(i * number)")
+    }
+}
+
+printTimesTable3(for: 5)
+
