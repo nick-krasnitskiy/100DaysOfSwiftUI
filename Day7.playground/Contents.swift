@@ -85,3 +85,51 @@ func greet(name: String) -> String {
 
 print(greet(name: "Nick"))
 print(greet(name: "Taylor Swift"))
+
+// How to return multiple values from functions
+
+func isUppercase(string: String) -> Bool {
+    string == string.uppercased()
+}
+
+func getUser() -> [String] {
+    ["Taylor", "Swift"]
+}
+
+let user = getUser()
+print("Name: \(user[0]) \(user[1])")
+
+func getUser2() -> [String: String] {
+    [
+        "firstname": "Taylor",
+        "lastname": "Swift"
+    ]
+}
+
+let user2 = getUser2()
+print("Name: \(user2["firstname", default: "Anonymous"]) \(user2["lastname", default: "Anonymous"])")
+
+
+func getUser3() -> (firstname: String, lastname: String) {
+    ("Taylor", "Swift")
+}
+
+let user3 = getUser3()
+print("Name: \(user3.firstname) \(user3.lastname)")
+
+func getUser4() -> (String, String) {
+    ("Taylor", "Swift")
+}
+
+let user4 = getUser4()
+print("Name: \(user4.0) \(user4.1)")
+
+let firstname = user3.firstname
+let lastname = user3.lastname
+print("Name: \(firstname) \(lastname)")
+
+let (firstname2, lastname2) = getUser3()
+print("Name: \(firstname2) \(lastname2)")
+
+let (firstname3, _) = getUser3()
+print("Name: \(firstname3)")
