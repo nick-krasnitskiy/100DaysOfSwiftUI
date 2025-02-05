@@ -74,3 +74,33 @@ do {
     print(error.localizedDescription)
 }
 
+// Checkpoint 4
+
+enum NumberError: Error {
+    case outOfBounds, noroot
+}
+
+func calculateRoot(of number: Int) throws -> Int {
+    
+    if number < 1 || number > 1000  {
+        throw NumberError.outOfBounds
+    } else {
+        for i in 0...number {
+            if i * i == number {
+                return i
+            } else {
+                continue
+            }
+        }
+        throw NumberError.noroot
+    }
+}
+
+do {
+    let result = try calculateRoot(of: 81)
+    print("The root is: \(result)")
+} catch NumberError.outOfBounds {
+    print("The number is less than 1 or greater than 10,000. Please, try again!")
+} catch NumberError.noroot {
+    print("The square root is not finded!")
+}
