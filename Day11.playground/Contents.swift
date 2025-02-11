@@ -35,3 +35,18 @@ if succes {
 
 // account.funds -= 100
 
+// Static properties and methods
+
+struct AppData {
+    static let version = "1.3 beta 2"
+    static let filename = "settings.json"
+    static let homeURL = "https://www.hackingwithswift.com"
+}
+
+struct Employee {
+    let username: String
+    let password: String
+    
+    static let example = Employee(username: "cfederighi", password: "hairforceone")
+}
+
