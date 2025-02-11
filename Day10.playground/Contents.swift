@@ -135,4 +135,53 @@ app.contacts.append("Adrian E")
 app.contacts.append("Allen W")
 app.contacts.append("Ish S")
 
+// How to create custom initializers
 
+struct Player {
+    let name: String
+    let number: Int
+}
+
+let player = Player(name: "Megan R", number: 15)
+
+struct Player2 {
+    let name: String
+    let number: Int
+    
+    init(name: String, number: Int) {
+        self.name = name
+        self.number = number
+    }
+}
+
+
+struct Player3 {
+    let name: String
+    let number: Int
+    
+    init(name: String) {
+        self.name = name
+        self.number = Int.random(in: 1...99)
+    }
+}
+
+let player3 = Player3(name: "Megan R")
+print(player3.number)
+
+struct Employee4 {
+    var name: String
+    var yearsActive: Int = 0
+}
+
+extension Employee4 {
+    init() {
+        self.name = "Anonymous"
+        print("Creating an anonymous employee…")
+    }
+}
+
+// creating a named employee now works
+let roslin = Employee4(name: "Laura Roslin")
+
+// as does creating an anonymous employee
+let anon = Employee4()
