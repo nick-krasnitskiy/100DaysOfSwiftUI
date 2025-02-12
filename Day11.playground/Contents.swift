@@ -50,3 +50,18 @@ struct Employee {
     static let example = Employee(username: "cfederighi", password: "hairforceone")
 }
 
+// Checkpoint 6
+
+struct Car {
+    let model: String
+    let numberOfSeats: Int
+    var currentGear: Int
+    
+    mutating func changeGears() {
+        currentGear += 1
+    }
+}
+
+var car = Car(model: "BMV", numberOfSeats: 5, currentGear: 3)
+car.changeGears()
+print(car.currentGear)
