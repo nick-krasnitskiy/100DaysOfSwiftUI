@@ -98,3 +98,35 @@ user3.username = "Nick"
 
 print(user1.username)
 print(user3.username)
+
+// How to create a deinitializer for a class
+
+class User2 {
+    let id: Int
+    
+    init(id: Int) {
+        self.id = id
+        print("User \(id): I'm alive!")
+    }
+    
+    deinit {
+        print("User \(id): I'm dead!")
+    }
+}
+
+for i in 1...3 {
+    let user = User2(id: i)
+    print("User \(user.id): I'm in control!")
+}
+
+var users = [User2]()
+
+for i in 1...3 {
+    let user = User2(id: i)
+    print("User \(user.id): I'm in control!")
+    users.append(user)
+}
+
+print("Loop is finshed!")
+users.removeAll()
+print("Array is clear!")
