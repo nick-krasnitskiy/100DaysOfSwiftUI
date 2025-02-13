@@ -145,3 +145,72 @@ var  user5 = User3()
 user5.name = "Taylor"
 user5 = User3()
 print(user5.name)
+
+// Checkpoint 7
+
+class Animal {
+    let legs: Int
+    
+    init(legs: Int) {
+        self.legs = legs
+    }
+}
+
+class Cat: Animal {
+    let isTame: Bool
+    
+    init(legs: Int, isTame: Bool) {
+        self.isTame = isTame
+        super.init(legs: legs)
+    }
+    
+    func speak() {
+        print("Myao!")
+    }
+}
+
+class Persian: Cat {
+    override func speak() {
+         print("Myao! I'm Persian cat!")
+    }
+}
+
+class Lion: Cat {
+    override func speak() {
+        print("Myao! I'm Lion cat!")
+    }
+}
+
+class Dog: Animal {
+    func speak() {
+        print("Woof!")
+    }
+}
+
+class Corgi: Dog {
+    override func speak() {
+        print("Woof! I'm Corgi dog!")
+    }
+}
+
+class Poodle: Dog {
+    override func speak() {
+        print("Woof! I'm Poodle dog!")
+    }
+}
+
+let dog = Dog(legs: 4)
+print(dog.legs)
+dog.speak()
+
+let poodle = Poodle(legs: 4)
+print(poodle.legs)
+poodle.speak()
+
+let cat = Cat(legs: 4, isTame: true)
+print(cat.legs, cat.isTame)
+cat.speak()
+
+let lion = Lion(legs: 4, isTame: true)
+print(lion.legs, lion.isTame)
+lion.speak()
