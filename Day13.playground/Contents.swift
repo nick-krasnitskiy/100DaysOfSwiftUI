@@ -100,3 +100,14 @@ func buy2(_ item: Purchaseable) {
     print("I'm biying \(item.name)")
 }
 
+// How to use opaque return types
+
+func getRandomNumber() -> some Equatable {
+    Int.random(in: 1...6)
+}
+
+func getRandomBool() -> some Equatable {
+    Bool.random()
+}
+
+print(getRandomNumber() == getRandomNumber())
