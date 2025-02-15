@@ -207,3 +207,41 @@ struct Employee: Person {
 
 let taylor = Employee(name: "Taylor Swift")
 taylor.sayHello()
+
+// Checkpoint 8
+
+protocol Building {
+    var numberOfRooms: Int { get set }
+    var cost: Int { get set }
+    var nameOfAgent: String { get set }
+    
+    func summaryOfSales()
+}
+
+extension Building {
+    func summaryOfSales() {
+        print("The sales summary of the building is 50%")
+        print("Number or rooms of the building: \(numberOfRooms)")
+        print("Cost of building: \(cost) $")
+        print("The name of the estate agent: \(nameOfAgent)")
+    }
+}
+
+struct House: Building {
+    var numberOfRooms: Int
+    var cost: Int
+    var nameOfAgent: String
+}
+
+struct Office: Building {
+    var numberOfRooms: Int
+    var cost: Int
+    var nameOfAgent: String
+}
+
+let house = House(numberOfRooms: 5, cost: 50000, nameOfAgent: "Sara O'Neal")
+let office = Office(numberOfRooms: 10, cost: 150000, nameOfAgent: "Jane Smith")
+
+
+house.summaryOfSales()
+office.summaryOfSales()
