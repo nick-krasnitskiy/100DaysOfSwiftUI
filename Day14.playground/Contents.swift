@@ -113,3 +113,20 @@ struct Book2 {
 var book2: Book2? = nil
 let author2 = book2?.author?.first?.uppercased() ?? "A"
 print(author2)
+
+// How to handle function failure with optionals
+
+enum UserError: Error {
+    case badID, networkFailed
+}
+
+func getUser(id: Int) throws -> String {
+    throw UserError.networkFailed
+}
+
+if let user = try? getUser(id: 23) {
+    print("User: \(user)")
+}
+
+let user2 = (try? getUser(id: 23)) ?? "Anonymous"
+print(user2)
