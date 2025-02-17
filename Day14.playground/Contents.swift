@@ -130,3 +130,12 @@ if let user = try? getUser(id: 23) {
 
 let user2 = (try? getUser(id: 23)) ?? "Anonymous"
 print(user2)
+
+// Checpoint 9
+
+func randomInt(of array: [Int]?) -> Int {
+    array?.randomElement() ?? Int.random(in: 1...100)
+}
+
+print(randomInt(of: nil))
+print(randomInt(of: [1, 5, 100]))
