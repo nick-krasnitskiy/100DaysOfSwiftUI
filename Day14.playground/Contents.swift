@@ -33,3 +33,40 @@ if let number {
     print(square(number: number))
 }
 
+// How to unwrap optionals with guard
+
+func printSquare(of number: Int?) {
+    guard let number = number else {
+        print("Missing input")
+        
+        // 1: We must exit the function here
+        return
+    }
+    
+    // 2: number exit the function here
+    print("\(number) X \(number) is \(number * number)")
+}
+
+var myVar: Int? = 3
+
+if let unwrapped = myVar {
+    print("Run if myVar has a value inside")
+}
+
+func getMeaningOfLife() -> Int? {
+    42
+}
+
+func printMeaningOfLife() {
+    if let name = getMeaningOfLife() {
+        print(name)
+    }
+}
+
+func printMeaningOfLife2() {
+    guard let name = getMeaningOfLife() else {
+        return
+    }
+    
+    print(name)
+}
