@@ -97,3 +97,19 @@ print(author)
 let input = ""
 let number2 = Int(input) ?? 0
 print(number2)
+
+// How to handle multiple optionals using optional chaining
+
+let names = ["Arya", "Bran", "Robb", "Sansa"]
+
+let chosen = names.randomElement()?.uppercased() ?? "No one"
+print("Next in line: \(chosen)")
+
+struct Book2 {
+    let title: String
+    let author: String?
+}
+
+var book2: Book2? = nil
+let author2 = book2?.author?.first?.uppercased() ?? "A"
+print(author2)
