@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    let inputUnits = ["seconds", "minites", "hours", "days"]
+    let outputUnits = ["seconds", "minites", "hours", "days"]
+    @State private var selectedInput = ""
+    @State private var selectedOutput = ""
+    @State private var value = 0.0
+    
+    var result: Double {
+        return 0.0
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Form {
+                Section("Select an input unit and an output unit") {
+                    Picker("Input unit", selection: $selectedInput) {
+                        ForEach(inputUnits, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    
+                    Picker("Output unit", selection: $selectedOutput) {
+                        ForEach(outputUnits, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+            }
+            .navigationTitle("Unit Conversions")
         }
-        .padding()
     }
 }
 
