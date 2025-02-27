@@ -15,7 +15,32 @@ struct ContentView: View {
     @State private var value = 0.0
     
     var result: Double {
-        return 0.0
+        var input = 0.0
+        var output = 0.0
+        
+        switch selectedInput {
+        case "seconds":
+            input = value
+        case "minites":
+            input = value * 60
+        case "hours":
+            input = value * 3600
+        default:
+            input = value * 86400
+        }
+    
+        switch selectedOutput {
+        case "seconds":
+            output = input
+        case "minites":
+            output = input / 60
+        case "hours":
+            output = input / 3600
+        default:
+            output = input / 86400
+        }
+        
+        return output
     }
     
     var body: some View {
@@ -38,11 +63,12 @@ struct ContentView: View {
                 }
                 
                 Section("Enter a value for conversion:") {
-                    TextField("Valur", value: $value, format: .number)
+                    TextField("Value", value: $value, format: .number)
+                        .keyboardType(.decimalPad)
                 }
                 
                 Section("Result of conversion:") {
-                    Text("\(result)")
+                    Text("\(Int(result))")
                 }
             }
             .navigationTitle("Unit Conversions")
