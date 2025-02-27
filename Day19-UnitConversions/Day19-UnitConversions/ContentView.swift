@@ -14,6 +14,8 @@ struct ContentView: View {
     @State private var selectedOutput = ""
     @State private var value = 0.0
     
+    @FocusState private var isFocused: Bool
+    
     var result: Double {
         var input = 0.0
         var output = 0.0
@@ -65,13 +67,22 @@ struct ContentView: View {
                 Section("Enter a value for conversion:") {
                     TextField("Value", value: $value, format: .number)
                         .keyboardType(.decimalPad)
+                        .focused($isFocused)
                 }
                 
                 Section("Result of conversion:") {
                     Text("\(Int(result))")
                 }
             }
+            .toolbar {
+                if isFocused {
+                    Button("Done") {
+                        isFocused = false
+                    }
+                }
+            }
             .navigationTitle("Unit Conversions")
+            
         }
     }
 }
