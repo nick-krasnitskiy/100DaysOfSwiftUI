@@ -21,7 +21,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Select an input unit and an output unit") {
+                Section("Select an input unit and an output unit:") {
                     Picker("Input unit", selection: $selectedInput) {
                         ForEach(inputUnits, id: \.self) {
                             Text($0)
@@ -35,6 +35,14 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+                }
+                
+                Section("Enter a value for conversion:") {
+                    TextField("Valur", value: $value, format: .number)
+                }
+                
+                Section("Result of conversion:") {
+                    Text("\(result)")
                 }
             }
             .navigationTitle("Unit Conversions")
