@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAlert = false
+    
     var body: some View {
-        Button {
-            print("Edit button was tapped.")
-        } label: {
-            Label("Edit", systemImage: "pencil")
-                .padding()
-                .foregroundStyle(.white)
-                .background(.blue.gradient)
+        Button("Show Alert") {
+            showingAlert = true
+        }
+        .alert("Important Message", isPresented: $showingAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Pleade read this.")
         }
     }
 }
