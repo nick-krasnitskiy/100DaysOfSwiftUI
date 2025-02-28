@@ -71,7 +71,7 @@ struct ContentView: View {
                 }
                 
                 Section("Result of conversion:") {
-                    Text("\(Int(result))")
+                    Text("\(result.formatted())")
                 }
             }
             .toolbar {
