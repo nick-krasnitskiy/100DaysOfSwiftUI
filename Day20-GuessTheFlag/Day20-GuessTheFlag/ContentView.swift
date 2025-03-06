@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var userScore = 0
     @State private var textMessage = ""
+    @State private var questionCounter = 0
     
     var body: some View {
         ZStack {
@@ -72,20 +73,28 @@ struct ContentView: View {
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct"
-            textMessage = "Your score is \(userScore)"
             userScore += 1
+            textMessage = "Your score is \(userScore)"
         } else {
             scoreTitle = "Wrong"
-            textMessage = "That’s the flag of \(contries[number])!"
             userScore -= 1
+            textMessage = "That’s the flag of \(contries[number])!"
         }
         
         showingScore = true
+        questionCounter += 1
     }
     
     func askQuestion() {
         contries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        
+        if questionCounter == 7 {
+            questionCounter = 0
+            userScore = 0
+            contries.shuffle()
+            correctAnswer = Int.random(in: 0...2)
+        }
     }
  }
 
