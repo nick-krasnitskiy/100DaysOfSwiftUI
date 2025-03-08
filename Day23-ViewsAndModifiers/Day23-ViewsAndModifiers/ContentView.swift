@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var useRedText = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-            .background(.red)
-            .padding()
-            .background(.yellow)
-            .padding()
-            .background(.green)
-            .padding()
-            .background(.blue)
+        Button("Hello, world") {
+            // flip the Boolean between true and false
+            useRedText.toggle()
+        }
+        .foregroundStyle(useRedText ? .red : .blue)
     }
 }
 
