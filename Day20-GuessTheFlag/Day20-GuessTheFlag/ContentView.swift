@@ -36,16 +36,14 @@ struct ContentView: View {
                             .font(.subheadline.weight(.heavy))
                             .foregroundStyle(.secondary)
                         Text(contries[correctAnswer])
-                            .font(.largeTitle.weight(.semibold))
+                            .prominentTitle()
                     }
                     
                     ForEach(0..<3) { number in
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(contries[number])
-                                .clipShape(.capsule)
-                                .shadow(radius: 5)
+                            FlagImage(name: contries[number])
                         }
                     }
                 }
@@ -97,6 +95,29 @@ struct ContentView: View {
         }
     }
  }
+
+struct FlagImage: View {
+    var name: String
+    var body: some View {
+        Image(name)
+            .clipShape(.capsule)
+            .shadow(radius: 5)
+    }
+}
+
+struct ProminentTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundStyle(.blue)
+    }
+}
+
+extension View {
+    func prominentTitle() -> some View {
+        modifier(ProminentTitle())
+    }
+}
 
 #Preview {
     ContentView()
