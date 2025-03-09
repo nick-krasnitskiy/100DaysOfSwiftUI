@@ -12,8 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            ForEach(0..<agents.count) {
-                Text(agents[$0])
+            ForEach(agents, id: \.self) {
+                Text($0)
             }
         }
     }
