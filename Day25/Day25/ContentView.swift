@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    let agents = ["Cyril", "Lana", "Pam", "Sterling"]
+    @State private var selection = 0
     
     var body: some View {
-        VStack {
-            ForEach(agents, id: \.self) {
-                Text($0)
+        let binding = Binding (
+            get: { selection },
+            set: { selection = $0 }
+        )
+        
+        return VStack {
+            Picker("Select a nimber", selection: binding) {
+                ForEach(0..<3) {
+                    Text("Item \($0)")
+                }
             }
+            .pickerStyle(.segmented)
         }
+
     }
 }
 
