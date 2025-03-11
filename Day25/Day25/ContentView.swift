@@ -8,23 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 0
+    let variants = ["mountain.2", "newspaper", "scissors"]
+    let goals = ["Win", "Lose"]
     
-    var body: some View {
-        let binding = Binding (
-            get: { selection },
-            set: { selection = $0 }
-        )
-        
-        return VStack {
-            Picker("Select a nimber", selection: binding) {
-                ForEach(0..<3) {
-                    Text("Item \($0)")
-                }
-            }
-            .pickerStyle(.segmented)
-        }
+    @State private var randomVariant = Int.random(in: 0...2)
 
+    var body: some View {
+        VStack {
+            Image(systemName: variants[randomVariant])
+                .font(.largeTitle)
+        }
     }
 }
 
