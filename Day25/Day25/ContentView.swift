@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    let variants = ["mountain.2", "newspaper", "scissors"]
+    let variants = ["mountain.2", "scissors", "newspaper"]
     
     @State private var randomVariant = Int.random(in: 0...2)
-    @State private var userGoal = true
+    @State private var userGoal = Bool.random()
+    @State private var score = 0
 
     var body: some View {
         VStack(spacing: 30) {
@@ -20,21 +21,42 @@ struct ContentView: View {
             Text(userGoal ? "Win" : "Lose")
             
             HStack(spacing: 30) {
-                ForEach(variants, id: \.self) { name in
+                ForEach(0..<3) { number in
                     Button {
-                        // do
+                        checkVariants(for: number)
+                        refresh()
                     } label: {
-                        Image(systemName: name)
+                        Image(systemName: variants[number])
                             .font(.largeTitle)
                     }
                 }
             }
             
-            Button("Next") {
-                userGoal.toggle()
-                randomVariant = Int.random(in: 0...2)
+            Text("Your score is \(score)")
+        }
+    }
+    
+    func checkVariants(for number: Int) {
+        if userGoal {
+            switch (randomVariant, number) {
+            case (0, 0), (2, 0), (0, 1), (1, 1), (1, 2), (2, 2):
+                score -= 1
+            default:
+                score += 1
+            }
+        } else {
+            switch (randomVariant, number) {
+            case (0 , 0), (1, 0), (1, 1), (2, 1), (0, 2), (2, 2):
+                score -= 1
+            default:
+                score += 1
             }
         }
+    }
+    
+    func refresh() {
+        userGoal.toggle()
+        randomVariant = Int.random(in: 0...2)
     }
 }
 
