@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var randomVariant = Int.random(in: 0...2)
     @State private var userGoal = Bool.random()
     @State private var score = 0
+    @State private var questionCount = 0
+    @State private var isShowAlert = false
 
     var body: some View {
         VStack(spacing: 30) {
@@ -33,6 +35,11 @@ struct ContentView: View {
             }
             
             Text("Your score is \(score)")
+        }
+        .alert("", isPresented: $isShowAlert) {
+            Button("Play again", action: refresh)
+        } message: {
+            Text("Your final score: \(score)")
         }
     }
     
@@ -57,6 +64,13 @@ struct ContentView: View {
     func refresh() {
         userGoal.toggle()
         randomVariant = Int.random(in: 0...2)
+        questionCount += 1
+        
+        if questionCount >= 10 {
+            score = 0
+            questionCount = 0
+            isShowAlert = true
+        }
     }
 }
 
