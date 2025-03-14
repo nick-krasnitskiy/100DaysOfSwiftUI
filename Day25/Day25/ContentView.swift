@@ -15,31 +15,34 @@ struct ContentView: View {
     @State private var score = 0
     @State private var questionCount = 0
     @State private var isShowAlert = false
-
+    
     var body: some View {
-        VStack(spacing: 30) {
-            Image(systemName: variants[randomVariant])
-                .font(.largeTitle)
-            Text(userGoal ? "Win" : "Lose")
-            
-            HStack(spacing: 30) {
-                ForEach(0..<3) { number in
-                    Button {
-                        checkVariants(for: number)
-                        refresh()
-                    } label: {
-                        Image(systemName: variants[number])
-                            .font(.largeTitle)
+        NavigationStack {
+            VStack(spacing: 30) {
+                Image(systemName: variants[randomVariant])
+                    .font(.largeTitle)
+                Text(userGoal ? "Win" : "Lose")
+                
+                HStack(spacing: 30) {
+                    ForEach(0..<3) { number in
+                        Button {
+                            checkVariants(for: number)
+                            refresh()
+                        } label: {
+                            Image(systemName: variants[number])
+                                .font(.largeTitle)
+                        }
                     }
                 }
+                Text("Your score is \(score)")
             }
-            
-            Text("Your score is \(score)")
-        }
-        .alert("", isPresented: $isShowAlert) {
-            Button("Play again", action: refresh)
-        } message: {
-            Text("Your final score: \(score)")
+            .navigationTitle("Rock, Paper, Scissors")
+            .navigationBarTitleDisplayMode(.inline)
+            .alert("", isPresented: $isShowAlert) {
+                Button("Play again", action: refresh)
+            } message: {
+                Text("Your final score: \(score)")
+            }
         }
     }
     
