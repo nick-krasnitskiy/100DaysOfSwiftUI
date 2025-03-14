@@ -20,7 +20,11 @@ struct ContentView: View {
         NavigationStack {
             VStack(spacing: 30) {
                 Image(systemName: variants[randomVariant])
-                    .font(.largeTitle)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 70, height: 70)
+                    .foregroundStyle(.indigo)
+                    
                 Text(userGoal ? "Win" : "Lose")
                 
                 HStack(spacing: 30) {
@@ -37,7 +41,6 @@ struct ContentView: View {
                 Text("Your score is \(score)")
             }
             .navigationTitle("Rock, Paper, Scissors")
-            .navigationBarTitleDisplayMode(.inline)
             .alert("", isPresented: $isShowAlert) {
                 Button("Play again", action: refresh)
             } message: {
