@@ -19,28 +19,40 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
+                Spacer()
+                Spacer()
                 Image(systemName: variants[randomVariant])
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 70, height: 70)
-                    .foregroundStyle(.indigo)
-                    
-                Text(userGoal ? "Win" : "Lose")
-                
-                HStack(spacing: 30) {
+                    .styleToMainImage()
+                Spacer()
+                Text(userGoal ? "WIN" : "LOSE")
+                    .font(.largeTitle.bold())
+                Spacer()
+                HStack(spacing: 20) {
+                    Spacer()
                     ForEach(0..<3) { number in
                         Button {
                             checkVariants(for: number)
                             refresh()
                         } label: {
-                            Image(systemName: variants[number])
-                                .font(.largeTitle)
+                            ZStack {
+                                Color.indigo
+                                Image(systemName: variants[number])
+                                    .font(.largeTitle)
+                                    .foregroundStyle(.white)
+                            }
+                            .clipShape(.circle)
                         }
                     }
+                    Spacer()
                 }
-                Text("Your score is \(score)")
+                Spacer()
+                Text("Your score: \(score)")
+                    .font(.title)
+                Spacer()
             }
             .navigationTitle("Rock, Paper, Scissors")
+            .navigationBarTitleDisplayMode(.inline)
             .alert("", isPresented: $isShowAlert) {
                 Button("Play again", action: refresh)
             } message: {
@@ -79,6 +91,22 @@ struct ContentView: View {
         }
     }
 }
+
+struct MainImageStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledToFill()
+            .frame(width: 100, height: 100)
+            .foregroundStyle(.indigo)
+    }
+}
+
+extension View {
+    func styleToMainImage() -> some View {
+        modifier(MainImageStyle())
+    }
+}
+
 
 #Preview {
     ContentView()
