@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = ["Finn", "Leia", "Luke", "Rey"]
-    
     var body: some View {
-        List {
-            Text("Static row")
+        if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
+            // we found the file in our bundle!
             
-            ForEach(people, id: \.self) {
-                Text($0)
+            if let fileContents = try? String(contentsOf: fileURL) {
+                // we loaded a file into a string!
             }
-            
-            Text("Static row")
         }
     }
 }
