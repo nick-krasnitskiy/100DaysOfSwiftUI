@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var userScore = 0
+    
     var body: some View {
         NavigationStack {
             List {
@@ -32,6 +34,7 @@ struct ContentView: View {
                         }
                     }
                 }
+               
             }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
@@ -44,6 +47,8 @@ struct ContentView: View {
             .toolbar {
                 Button("Refresh", action: startGame)
             }
+            
+            Text("Your score: \(userScore)")
         }
     }
     
@@ -85,6 +90,7 @@ struct ContentView: View {
         withAnimation {
             useWords.insert(newWord, at: 0)
         }
+        userScore += 1
         newWord = ""
     }
     
