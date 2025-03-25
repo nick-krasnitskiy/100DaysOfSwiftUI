@@ -51,6 +51,7 @@ struct ContentView: View {
         // exit if the remaining string is empty
         guard answer.count > 0 else { return }
         
+        
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original")
             return
@@ -65,6 +66,18 @@ struct ContentView: View {
             wordError(title: "Word not recognized", message: "You can't just make them up, you know!")
             return
         }
+        
+        
+        guard rootWord != answer else {
+            wordError(title: "Your answer is just a start word", message: "Try again!")
+            return
+        }
+        
+        guard answer.count > 3 else {
+            wordError(title: "Your answer is shorter than three letters", message: "Try again!")
+            return
+        }
+        
         
         withAnimation {
             useWords.insert(newWord, at: 0)
