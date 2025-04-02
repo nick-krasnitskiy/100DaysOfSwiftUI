@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var textMessage = ""
     @State private var questionCounter = 0
     
+    @State private var angle = 0.0
+    
     var body: some View {
         ZStack {
             RadialGradient(stops: [
@@ -44,6 +46,7 @@ struct ContentView: View {
                             flagTapped(number)
                         } label: {
                             FlagImage(name: contries[number])
+                                .rotation3DEffect(.degrees(angle), axis: (0, 1, 0))
                         }
                     }
                 }
@@ -69,6 +72,8 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
+        angle += 360
+        
         if number == correctAnswer {
             scoreTitle = "Correct"
             userScore += 1
