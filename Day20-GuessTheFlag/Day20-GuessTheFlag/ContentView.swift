@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var questionCounter = 0
     
     @State private var angle = 0.0
+    @State private var isFlagTapped = false
     
     var body: some View {
         ZStack {
@@ -24,8 +25,8 @@ struct ContentView: View {
                 .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
                 .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3)
             ], center: .top, startRadius: 200, endRadius: 400)
-                .ignoresSafeArea()
-           
+            .ignoresSafeArea()
+            
             VStack {
                 Spacer()
                 Text("Guess the Flag")
@@ -47,6 +48,7 @@ struct ContentView: View {
                         } label: {
                             FlagImage(name: contries[number])
                                 .rotation3DEffect(.degrees(angle), axis: (0, 1, 0))
+                                .opacity(isFlagTapped ? 0.25 : 1.0)
                         }
                     }
                 }
@@ -73,6 +75,7 @@ struct ContentView: View {
     
     func flagTapped(_ number: Int) {
         angle += 360
+        isFlagTapped.toggle()
         
         if number == correctAnswer {
             scoreTitle = "Correct"
@@ -89,6 +92,7 @@ struct ContentView: View {
     }
     
     func askQuestion() {
+        isFlagTapped = false
         contries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         
@@ -99,7 +103,7 @@ struct ContentView: View {
             correctAnswer = Int.random(in: 0...2)
         }
     }
- }
+}
 
 struct FlagImage: View {
     var name: String
