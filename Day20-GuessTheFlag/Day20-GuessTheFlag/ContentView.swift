@@ -18,6 +18,7 @@ struct ContentView: View {
     
     @State private var angle = 0.0
     @State private var isFlagTapped = false
+    @State private var choosenFlag: Int?
     
     var body: some View {
         ZStack {
@@ -48,7 +49,8 @@ struct ContentView: View {
                         } label: {
                             FlagImage(name: contries[number])
                                 .rotation3DEffect(.degrees(angle), axis: (0, 1, 0))
-                                .opacity(isFlagTapped ? 0.25 : 1.0)
+                                .opacity(isFlagTapped && choosenFlag != number ? 0.25 : 1.0)
+                                .scaleEffect(isFlagTapped && choosenFlag != number ? 0.7 : 1)
                         }
                     }
                 }
@@ -74,6 +76,7 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
+        choosenFlag = number
         angle += 360
         isFlagTapped.toggle()
         
