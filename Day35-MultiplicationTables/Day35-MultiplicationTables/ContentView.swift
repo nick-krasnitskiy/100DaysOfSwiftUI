@@ -12,7 +12,12 @@ struct ContentView: View {
     
     @State private var selectedNumberOfQuestions = 5
     @State private var multiplicationTable = 2
+    @State private var multiplicationNumber =  Int.random(in: 1...12)
     @State private var answer: Int? = nil
+    
+    @State private var questionCount = 1
+    @State private var score = 0
+    @State private var isGameOver = false
     
     var body: some View {
         VStack(spacing: 30) {
@@ -29,15 +34,39 @@ struct ContentView: View {
             }
             .pickerStyle(.segmented)
             
-            Text("What is \(multiplicationTable) x 8?")
+            Text("What is \(multiplicationTable) x \(multiplicationNumber)?")
             
             TextField("Your answer", value: $answer, format: .number)
                 .padding(.horizontal, 50)
             
-            Button("Next") {
-                // some code
+            Button("Next Question") {
+                checkAnswer()
+                generateQuestion()
+                answer = nil
             }
+            
+            Text("Your score: \(score)")
         }
+        .alert("Game Over", isPresented: $isGameOver) {
+            Button("Play again", action: generateQuestion)
+        } message: {
+            Text("Your final score: \(score)")
+        }
+    }
+    
+    func generateQuestion() {
+        multiplicationNumber =  Int.random(in: 1...12)
+    }
+    
+    func checkAnswer() {
+        while questionCount <= selectedNumberOfQuestions {
+            if answer == multiplicationTable * multiplicationNumber {
+                score += 1
+            }
+            questionCount += 1
+        }
+        
+        isGameOver = true
     }
 }
 
