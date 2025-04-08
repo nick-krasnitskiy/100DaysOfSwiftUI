@@ -53,11 +53,7 @@ struct ContentView: View {
                                 .clipShape(.rect(cornerRadius: 10))
                                
                         }
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(width: 300, height: 250)
-                        .padding()
-                        .background(.regularMaterial)
-                        .clipShape(.rect(cornerRadius: 20))
+                        .toWindowStyle()
                         
                     } else {
                         VStack {
@@ -72,6 +68,8 @@ struct ContentView: View {
                             }
                             Text("Your score: \(score)")
                         }
+
+                        .toWindowStyle()
                         .transition(.scale)
                     }
                 }
@@ -98,6 +96,23 @@ struct ContentView: View {
             questionCount += 1
         }
         isGameOver = true
+    }
+}
+
+struct WindowModifierStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(width: 300, height: 250)
+            .padding()
+            .background(.regularMaterial)
+            .clipShape(.rect(cornerRadius: 20))
+    }
+}
+
+extension View {
+    func toWindowStyle() -> some View {
+        modifier(WindowModifierStyle())
     }
 }
 
