@@ -41,12 +41,17 @@ struct ContentView: View {
                                 }
                                 .pickerStyle(.segmented)
                             }
-                            Button("Start") { isGameActive = true }
+                            Button("Start") {
+                                withAnimation {
+                                    isGameActive = true
+                                }
+                            }
                                 .frame(width: 50, height: 10)
                                 .padding()
                                 .background(.black)
                                 .foregroundStyle(.white)
                                 .clipShape(.rect(cornerRadius: 10))
+                               
                         }
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(width: 300, height: 250)
@@ -67,6 +72,7 @@ struct ContentView: View {
                             }
                             Text("Your score: \(score)")
                         }
+                        .transition(.scale)
                     }
                 }
             }
