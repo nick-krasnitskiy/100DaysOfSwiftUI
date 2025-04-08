@@ -46,26 +46,23 @@ struct ContentView: View {
                                     isGameActive = true
                                 }
                             }
-                                .frame(width: 50, height: 10)
-                                .padding()
-                                .background(.black)
-                                .foregroundStyle(.white)
-                                .clipShape(.rect(cornerRadius: 10))
-                               
+                            .toButtonStyle()
                         }
                         .toWindowStyle()
                         
                     } else {
                         VStack {
                             Text("What is \(multiplicationTable) x \(multiplicationNumber)?")
-                            
+                                .font(.title.bold())
                             TextField("Your answer", value: $answer, format: .number)
                             
-                            Button("Next Question") {
+                            Button("Next") {
                                 checkAnswer()
                                 generateQuestion()
                                 answer = nil
                             }
+                            .toButtonStyle()
+                            
                             Text("Your score: \(score)")
                         }
 
@@ -110,9 +107,26 @@ struct WindowModifierStyle: ViewModifier {
     }
 }
 
+struct ButtonModifierStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(width: 50, height: 10)
+            .padding()
+            .background(.black)
+            .foregroundStyle(.white)
+            .clipShape(.rect(cornerRadius: 10))
+    }
+}
+
 extension View {
     func toWindowStyle() -> some View {
         modifier(WindowModifierStyle())
+    }
+}
+
+extension View {
+    func toButtonStyle() -> some View {
+        modifier(ButtonModifierStyle())
     }
 }
 
