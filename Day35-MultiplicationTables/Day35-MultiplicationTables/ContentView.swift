@@ -51,21 +51,18 @@ struct ContentView: View {
                         .toWindowStyle()
                         
                     } else {
-                        VStack {
+                        VStack(spacing: 40) {
                             Text("What is \(multiplicationTable) x \(multiplicationNumber)?")
                                 .font(.title.bold())
                             TextField("Your answer", value: $answer, format: .number)
-                            
+                                .textFieldStyle(.roundedBorder)
                             Button("Next") {
                                 checkAnswer()
                                 generateQuestion()
                                 answer = nil
                             }
                             .toButtonStyle()
-                            
-                            Text("Your score: \(score)")
                         }
-
                         .toWindowStyle()
                         .transition(.scale)
                     }
@@ -74,7 +71,11 @@ struct ContentView: View {
             .ignoresSafeArea()
             .navigationTitle("Multiplication Tables")
             .alert("Game Over", isPresented: $isGameOver) {
-                Button("Play again", action: generateQuestion)
+                Button("Play again") {
+                    questionCount = 1
+                    score = 0
+                    generateQuestion()
+                }
             } message: {
                 Text("Your final score: \(score)")
             }
@@ -86,14 +87,15 @@ struct ContentView: View {
     }
     
     func checkAnswer() {
-        while questionCount <= selectedNumberOfQuestions {
-            if answer == multiplicationTable * multiplicationNumber {
-                score += 1
-            }
-            questionCount += 1
+        if answer == multiplicationTable * multiplicationNumber {
+            score += 1
         }
-        isGameOver = true
+        questionCount += 1
+        if questionCount == selectedNumberOfQuestions {
+            isGameOver = true
+        }
     }
+    
 }
 
 struct WindowModifierStyle: ViewModifier {
