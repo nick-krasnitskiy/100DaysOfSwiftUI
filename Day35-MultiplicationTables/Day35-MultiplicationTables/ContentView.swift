@@ -14,12 +14,13 @@ struct ContentView: View {
     
     @State private var selectedNumberOfQuestions = 5
     @State private var multiplicationTable = 2
-    @State private var multiplicationNumber =  Int.random(in: 1...12)
     @State private var answer: Int? = nil
     
     @State private var questionCount = 1
     @State private var score = 0
     @State private var isGameOver = false
+    
+    @State private var questions = [Question]()
     
     var body: some View {
         NavigationStack {
@@ -28,7 +29,7 @@ struct ContentView: View {
                 VStack {
                     if !isGameActive {
                         VStack {
-                            VStack(alignment: .leading, spacing: 20) {
+                            VStack(alignment: .leading) {
                                 Text("Which multiplication table do you want to practice?")
                                     .font(.headline)
                                 Stepper("\(multiplicationTable) tables", value: $multiplicationTable, in: 2...12)
@@ -43,6 +44,7 @@ struct ContentView: View {
                             }
                             Button("Start") {
                                 withAnimation {
+                                    generateQuestion()
                                     isGameActive = true
                                 }
                             }
@@ -52,13 +54,12 @@ struct ContentView: View {
                         
                     } else {
                         VStack(spacing: 40) {
-                            Text("What is \(multiplicationTable) x \(multiplicationNumber)?")
+                            Text(questions[0].question)
                                 .font(.title.bold())
                             TextField("Your answer", value: $answer, format: .number)
                                 .textFieldStyle(.roundedBorder)
                             Button("Next") {
                                 checkAnswer()
-                                generateQuestion()
                                 answer = nil
                             }
                             .toButtonStyle()
@@ -83,19 +84,34 @@ struct ContentView: View {
     }
     
     func generateQuestion() {
-        multiplicationNumber =  Int.random(in: 1...12)
+        for _ in 1...selectedNumberOfQuestions + 1 {
+            var multiplicationNumber = Int.random(in: 1...100)
+            var question = Question(question: "What is \(multiplicationTable) x \(multiplicationNumber)?", answer: multiplicationTable * multiplicationNumber)
+            questions.append(question)
+        }
     }
     
     func checkAnswer() {
-        if answer == multiplicationTable * multiplicationNumber {
+        if answer == questions[0].answer {
             score += 1
         }
         questionCount += 1
-        if questionCount == selectedNumberOfQuestions {
+        questions.remove(at: 0)
+        
+        if questionCount > selectedNumberOfQuestions {
             isGameOver = true
         }
     }
     
+}
+
+struct Question: View {
+    var question: String
+    var answer: Int
+    
+    var body: some View {
+        Text(question)
+    }
 }
 
 struct WindowModifierStyle: ViewModifier {
