@@ -87,7 +87,14 @@ struct ContentView: View {
     func generateQuestion() {
         for _ in 1...selectedNumberOfQuestions + 1 {
             let multiplicationNumber = Int.random(in: 1...10)
-            questions.append(Question(question: "What is \(multiplicationTable) x \(multiplicationNumber)?", answer: multiplicationTable * multiplicationNumber))
+            let question = Question(question: "What is \(multiplicationTable) x \(multiplicationNumber)?", answer: multiplicationTable * multiplicationNumber)
+            if !questions.contains(question) {
+                questions.append(question)
+            } else {
+                let multiplicationNumber = Int.random(in: 1...10)
+                let question = Question(question: "What is \(multiplicationTable) x \(multiplicationNumber)?", answer: multiplicationTable * multiplicationNumber)
+                questions.append(question)
+            }
         }
     }
     
@@ -107,7 +114,7 @@ struct ContentView: View {
     
 }
 
-struct Question: View {
+struct Question: View, Hashable {
     var question: String
     var answer: Int
     
