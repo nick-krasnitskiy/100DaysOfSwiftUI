@@ -86,7 +86,7 @@ struct ContentView: View {
     
     func generateQuestion() {
         for _ in 1...selectedNumberOfQuestions + 1 {
-            let multiplicationNumber = Int.random(in: 1...100)
+            let multiplicationNumber = Int.random(in: 1...10)
             questions.append(Question(question: "What is \(multiplicationTable) x \(multiplicationNumber)?", answer: multiplicationTable * multiplicationNumber))
         }
     }
@@ -97,6 +97,7 @@ struct ContentView: View {
         }
         
         if questionCount == selectedNumberOfQuestions {
+            isGameActive = false
             isGameOver = true
         }
         
