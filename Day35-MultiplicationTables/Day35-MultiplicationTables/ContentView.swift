@@ -58,6 +58,7 @@ struct ContentView: View {
                                 .font(.title.bold())
                             TextField("Your answer", value: $answer, format: .number)
                                 .textFieldStyle(.roundedBorder)
+                                .keyboardType(.decimalPad)
                             Button("Next") {
                                 checkAnswer()
                                 answer = nil
@@ -85,9 +86,8 @@ struct ContentView: View {
     
     func generateQuestion() {
         for _ in 1...selectedNumberOfQuestions + 1 {
-            var multiplicationNumber = Int.random(in: 1...100)
-            var question = Question(question: "What is \(multiplicationTable) x \(multiplicationNumber)?", answer: multiplicationTable * multiplicationNumber)
-            questions.append(question)
+            let multiplicationNumber = Int.random(in: 1...100)
+            questions.append(Question(question: "What is \(multiplicationTable) x \(multiplicationNumber)?", answer: multiplicationTable * multiplicationNumber))
         }
     }
     
@@ -95,12 +95,13 @@ struct ContentView: View {
         if answer == questions[0].answer {
             score += 1
         }
-        questionCount += 1
-        questions.remove(at: 0)
         
-        if questionCount > selectedNumberOfQuestions {
+        if questionCount == selectedNumberOfQuestions {
             isGameOver = true
         }
+        
+        questionCount += 1
+        questions.remove(at: 0)
     }
     
 }
