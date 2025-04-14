@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationStack {
             List {
                 Section("Personal expenses") {
-                    ForEach(expenses.items) { item in
+                    ForEach(expenses.items.filter {$0.type == "Personal"}) { item in
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(item.name)
@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
                 
                 Section("Business expenses") {
-                    ForEach(expenses.items) { item in
+                    ForEach(expenses.items.filter {$0.type == "Business"}) { item in
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(item.name)
@@ -109,7 +109,7 @@ struct ExpensesStyle: ViewModifier {
                 .foregroundStyle(.blue)
         default:
             content
-                .foregroundStyle(.blue)
+                .foregroundStyle(.green)
         }
     }
 }
