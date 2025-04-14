@@ -14,35 +14,46 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
+                Section("Personal expenses") {
+                    ForEach(expenses.items) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                            }
+                            Spacer()
+                            
+                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                .expensesStyle(for: item)
                         }
-                        Spacer()
-        
-                        if item.amount < 10 {
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                .foregroundStyle(.red)
-                        } else if item.amount < 100 {
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                .foregroundStyle(.blue)
-                        } else {
-                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                .foregroundStyle(.green)
-                        }
-                        
                     }
+                    .onDelete(perform: removeItems)
                 }
-                .onDelete(perform: removeItems)
+                
+                Section("Business expenses") {
+                    ForEach(expenses.items) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                            }
+                            Spacer()
+                            
+                            Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                .expensesStyle(for: item)
+                        }
+                    }
+                    .onDelete(perform: removeItems)
+
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
                 Button("Add Expense", systemImage: "plus") {
                     showingAddExpense = true
-
+                    
                 }
             }
             .sheet(isPresented: $showingAddExpense) {
@@ -82,6 +93,30 @@ class Expenses {
         }
         
         items = []
+    }
+}
+
+struct ExpensesStyle: ViewModifier {
+    let expenseItem: ExpenseItem
+    
+    func body(content: Content) -> some View {
+        switch expenseItem.amount {
+        case 0..<10:
+            content
+                .foregroundStyle(.red)
+        case 10..<100:
+            content
+                .foregroundStyle(.blue)
+        default:
+            content
+                .foregroundStyle(.blue)
+        }
+    }
+}
+
+extension View {
+    func expensesStyle(for expenseItem: ExpenseItem) -> some View {
+        modifier(ExpensesStyle(expenseItem: expenseItem))
     }
 }
 
