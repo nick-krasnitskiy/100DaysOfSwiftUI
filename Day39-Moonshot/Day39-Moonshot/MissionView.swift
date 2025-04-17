@@ -27,6 +27,9 @@ struct MissionView: View {
                     }
                     .padding(.top)
                 
+                Text(mission.launchDate?.formatted(date: .complete, time: .omitted) ?? "N/A")
+                    .font(.title)
+                
                 VStack(alignment: .leading) {
                     Rectangle()
                         .frame(height: 2)
