@@ -9,5 +9,5 @@ import Foundation
 
 @Observable
 class Habits {
-    var habits = [Habit]()
+    var items = [Habit]()
 }
