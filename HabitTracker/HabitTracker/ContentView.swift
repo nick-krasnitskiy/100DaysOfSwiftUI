@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var habits = Habits()
+    @State private var AddHabitIsPresented = false
     
     var body: some View {
         NavigationStack {
@@ -22,9 +23,12 @@ struct ContentView: View {
             }
             .navigationTitle("Habit Tracker")
             .toolbar {
-                NavigationLink("Add habit") {
-                    HabitView(habits: habits)
+                Button("Add habit") {
+                    AddHabitIsPresented = true
                 }
+            }
+            .sheet(isPresented: $AddHabitIsPresented) {
+                HabitView(habits: habits)
             }
         }
     }
