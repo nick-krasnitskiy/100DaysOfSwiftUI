@@ -19,6 +19,7 @@ struct HabitView: View {
             Form {
                 TextField("Title", text: $title)
                 TextField("Decription", text: $description)
+                
             }
             .navigationTitle("Add habit")
             .toolbar {
