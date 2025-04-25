@@ -16,10 +16,11 @@ struct ContentView: View {
             List {
                 ForEach(habits.items) { habit in
                     NavigationLink {
-                        DetailView(habit: habit)
+                        DetailView(habit: habit, habits: habits)
                     } label: {
                         VStack(alignment: .leading) {
                             Text(habit.title)
+                                .fontWeight(.bold)
                             Text(habit.description)
                         }
                     }
