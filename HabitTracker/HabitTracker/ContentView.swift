@@ -26,6 +26,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onDelete(perform: removeItems)
             }
             .navigationTitle("Habit Tracker")
             .toolbar {
@@ -37,6 +38,10 @@ struct ContentView: View {
                 HabitView(habits: habits)
             }
         }
+    }
+    
+    func removeItems(at offsets: IndexSet) {
+        habits.items.remove(atOffsets: offsets)
     }
 }
 
