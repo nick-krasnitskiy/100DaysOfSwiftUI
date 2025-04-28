@@ -22,6 +22,7 @@ struct ContentView: View {
                             Text(habit.title)
                                 .fontWeight(.bold)
                             Text(habit.description)
+                            Text("\(habit.completionCount)")
                         }
                     }
                 }

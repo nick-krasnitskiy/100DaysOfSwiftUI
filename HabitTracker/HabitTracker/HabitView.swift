@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitView: View {
     @State private var title = ""
     @State private var description = ""
+    @State private var completionCount = 0
     
     var habits: Habits
     @Environment(\.dismiss) var dismiss
@@ -24,7 +25,7 @@ struct HabitView: View {
             .navigationTitle("Add habit")
             .toolbar {
                 Button("Save") {
-                    let item = Habit(title: title, description: description)
+                    let item = Habit(title: title, description: description, completionCount: completionCount)
                     habits.items.append(item)
                     dismiss()
                 }

@@ -11,4 +11,5 @@ struct Habit: Identifiable, Equatable {
     var id = UUID()
     let title: String
     let description: String
+    var completionCount: Int
 }

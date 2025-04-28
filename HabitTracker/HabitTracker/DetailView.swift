@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct DetailView: View {
-    let habit: Habit
+    var habit: Habit
     let habits: Habits
-    
-    @State private var competionCount = 0
-    
+
     var body: some View {
         NavigationStack {
             List {
                 Text(habit.description)
                 HStack {
-                    Text("This habit has completed: \(competionCount) times")
+                    Text("This habit has completed: \(habit.completionCount) times")
                     Spacer()
                     Button {
-                        competionCount += 1
+                        var copyHabit = habit
+                        if let i = habits.items.firstIndex(of: copyHabit) {
+                            habits.items[i] = copyHabit
+                            habits.items[i].completionCount += 1
+                        }
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -34,5 +36,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(habit: Habit(title: "One", description: "Useful habit"), habits: Habits())
+    DetailView(habit: Habit(title: "Run", description: "Running", completionCount: 0), habits: Habits())
 }
