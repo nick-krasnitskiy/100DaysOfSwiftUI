@@ -6,18 +6,3 @@ A 100-day journey to master SwiftUI, following Paul Hudson's "100 Days of SwiftU
 
 **Course:** [Hacking with Swift – 100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui)  
 **Author:** Paul Hudson  
-
-
-
----
-
-## 🗂 Repository Structure
-
-100DaysOfSwiftUI/
-├── Day01-Project1/ # Day 1: Project Name
-│ ├── Project1/ # Xcode project files
-│ │ ├── ContentView.swift
-│ │ └── ...
-├── Day02-Project2/
-│ └── ...
-└── README.md # (You're here!)
