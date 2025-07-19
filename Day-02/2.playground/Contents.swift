@@ -54,3 +54,9 @@ print("5 x 5 is \(5 * 5)")
 
 var city = "Cardiff"
 var message2 = "Welcome to \(city)"
+
+// Checkpoint 1
+
+let celsius = 32.0
+let farhrenheit = celsius * 9 / 5 + 32
+print("Temperature is: \(celsius) ºC = \(farhrenheit) ºF")
