@@ -41,4 +41,8 @@ var name: String
 
 let names = ["Eleanor", "Chidi", "Tahani", "Jianyu", "Michael", "Janet"]
 
+// Checkpoint 2
 
+let friends = ["Nick", "Steve", "Ivan", "Stas", "Ivan"]
+print(friends.count)
+print(Set(friends).count)
