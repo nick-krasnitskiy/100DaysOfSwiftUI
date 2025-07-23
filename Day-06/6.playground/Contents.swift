@@ -66,3 +66,30 @@ print(names2[0])
 print(names2[1...3])
 
 print(names2[1...])
+
+// Use a while loop to repeat work
+
+var countdown = 10
+
+while countdown > 0 {
+    print("\(countdown)...")
+    countdown -= 1
+}
+
+print("Blast off!")
+
+let id = Int.random(in: 1...1000)
+let amount = Double.random(in: 0...1)
+
+// create an integer to srore our roll
+var roll = 0
+
+// carry on looping untill we reach 20
+while roll != 20 {
+    // roll a new dice and print what it was
+    roll = Int.random(in: 1...20)
+    print("I rolled a \(roll)")
+}
+
+// if we're here it means the loop ended - we got a 20!
+print("Critical hit!")
