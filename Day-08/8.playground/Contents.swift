@@ -71,3 +71,49 @@ do {
 } catch {
     print("There was an error.")
 }
+
+// Checkpoint 4
+
+print("--- Checkpoint 4 ---")
+
+enum NumberError: Error {
+    case outOfBounds, noRoot
+}
+
+
+func squareRoot(for number: Int) throws -> Int {
+    if number < 1 || number > 1000 {
+        throw NumberError.outOfBounds
+    }
+    
+    var root = 0
+    
+    for i in 1..<number {
+        if i * i == number {
+            root = i
+            break
+        } else {
+            continue
+        }
+        
+    }
+    
+    if root == 0 {
+        throw NumberError.noRoot
+    }
+   
+    return root
+}
+
+let number = 9
+
+do {
+    let root = try squareRoot(for: number)
+    print(root)
+} catch NumberError.outOfBounds {
+    print("You number is less than 1 or greater than 10 000. Please, try again!")
+} catch NumberError.noRoot {
+    print("I can't find the square root of your number!")
+} catch {
+    print(error.localizedDescription)
+}
