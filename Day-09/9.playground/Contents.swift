@@ -80,3 +80,30 @@ let payment3 = { () -> Bool in
     print("Paying an anonymous person...")
     return true
 }
+
+// Use trailing closures and shorthand syntax
+
+let captainFirstTeam3 = team.sorted {
+    if $0 == "Suzanne" {
+        return true
+    } else if $1 == "Suzanne" {
+        return false
+    }
+    return $0 < $1
+}
+
+let reverseTeam = team.sorted { $0 > $1 }
+
+let tOnly = team.filter { $0.hasPrefix("T") }
+print(tOnly)
+
+let uppercaseTeam = team.map { $0.uppercased() }
+print(uppercaseTeam)
+
+func animate(duration: Double, animations: () -> ()) {
+    print("Starting a \(duration) second animation...")
+    animations()
+}
+
+
+animate(duration: 3) { print("Fade out the image") }
