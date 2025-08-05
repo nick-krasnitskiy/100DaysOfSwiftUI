@@ -47,3 +47,43 @@ var archer2 = Employee.init(name: "Sterling Archer", vacationRemaining: 14)
 
 let kane = Employee(name: "Lana Kane")
 let poovey = Employee(name: "Pam Poovey", vacationRemaining: 35)
+
+// Compute propery values dynamically
+
+struct Employee2 {
+    let name: String
+    var vacaionRemaining: Int
+}
+
+var archer3 = Employee2(name: "Sterlng Archer", vacaionRemaining: 14)
+archer3.vacaionRemaining -= 5
+print(archer3.vacaionRemaining)
+archer3.vacaionRemaining -= 3
+print(archer3.vacaionRemaining)
+
+struct Employee4 {
+    let name: String
+    var vacationAllocated = 14
+    var vacationTaken = 0
+    
+    var vacationRemaing: Int {
+        get {
+            vacationAllocated - vacationTaken
+        }
+        
+        set {
+            vacationAllocated = vacationTaken + newValue
+        }
+    }
+}
+
+var archer4 = Employee4(name: "Sterling Archer", vacationAllocated: 14)
+
+archer4.vacationTaken += 4
+print(archer4.vacationRemaing)
+
+archer4.vacationTaken += 4
+print(archer4.vacationRemaing)
+
+archer4.vacationRemaing = 5
+print(archer4.vacationAllocated)
