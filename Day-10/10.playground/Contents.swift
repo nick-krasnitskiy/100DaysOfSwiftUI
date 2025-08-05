@@ -134,3 +134,54 @@ var app = App()
 app.contacts.append("Adrian E")
 app.contacts.append("Allen W")
 app.contacts.append("Tsh S")
+
+// Сreate custom initializers
+
+struct Player {
+    let name: String
+    let number: Int
+    
+    init(name: String) {
+        self.name = name
+        number = Int.random(in: 1...99)
+    }
+}
+
+let player = Player(name: "Megan R")
+print(player.number)
+
+struct Employee5 {
+    var name: String
+    var yearActive = 0
+}
+
+let roslin = Employee5(name: "Laura Roslin")
+let adama = Employee5(name: "Willian Adama", yearActive: 45)
+
+struct Employee6 {
+    var name: String
+    var yearsActive = 0
+    
+    init() {
+        self.name = "Anonymous"
+        print("Creating an anonymous employee...")
+    }
+}
+
+struct Employee7 {
+    var name: String
+    var yearsActive = 0
+}
+
+extension Employee7 {
+    init() {
+        self.name = "Anonymous"
+        print("Creating an anonymous employee...")
+    }
+}
+
+// creating a named emloyee now works
+let roslin2 =  Employee7(name: "Laura Roslin")
+
+// as does creating an anonymous employee
+let anon = Employee7()
