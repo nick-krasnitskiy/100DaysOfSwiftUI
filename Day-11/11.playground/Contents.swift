@@ -64,3 +64,27 @@ struct Employee {
 struct Unwrap {
     static let appURL = "https://itunes.apple.com/app/id1440611372"
 }
+
+// Checkpoint 6
+
+struct Car {
+    let model: String
+    let numberOfSeats: Int
+    private var currentGear: Int
+    
+    mutating func changeGear() {
+        currentGear += 1
+        print(currentGear)
+    }
+    
+    init(model: String, numberOfSeats: Int, currentGear: Int) {
+        self.model = model
+        self.numberOfSeats = numberOfSeats
+        self.currentGear = currentGear
+    }
+}
+
+var car = Car(model: "Tesla", numberOfSeats: 4, currentGear: 5)
+print(car.model)
+print(car.numberOfSeats)
+car.changeGear()
