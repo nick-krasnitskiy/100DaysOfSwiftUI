@@ -75,3 +75,33 @@ class Car: Vehicle {
 }
 
 let teslaX = Car(isElectric: true, isConvertible: false)
+
+// Copy classes
+
+class User {
+    var username = "Anonymous"
+}
+
+var user1 = User()
+var user2 = user1
+user2.username = "Taylor"
+
+print(user2.username)
+print(user1.username)
+
+class User3 {
+    var username = "Anonymous"
+    
+    func copy() -> User3 {
+        let user = User3()
+        user.username = username
+        return user
+    }
+}
+
+let user3 = User3()
+let user4 = user3.copy()
+user3.username = "Taylor"
+
+print(user3.username)
+print(user4.username)
