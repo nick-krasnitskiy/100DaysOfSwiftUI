@@ -133,4 +133,21 @@ print("Loop is finished!")
 users.removeAll()
 print("Array is clear!")
 
+// Work with variables inside classes
 
+class User6 {
+    var name = "Paul"
+}
+
+let user6 = User6()
+user6.name = "Taylor"
+print(user6.name)
+
+class User7 {
+    var name = "Paul"
+}
+
+var user7 = User7()
+user7.name = "Taylor"
+user7 = User7()
+print(user7.name)
